@@ -1,0 +1,163 @@
+---
+## Author
+author:
+  name: Симонова Виктория Игоревна
+  degrees: DSc
+  orcid: 0000-0002-0877-7063
+  email: 1132236012@rudn.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+
+## Title
+title: "Отчёт по лабораторной работе 06"
+subtitle: "Простейший вариант"
+license: "CC BY"
+---
+
+# Цель работы
+
+Реализовать эпидемиологическую модель SIR (Susceptible–Infectious–Recovered) с использованием сетей Петри, выполнить детерминированное и стохастическое моделирование, исследовать влияние параметров на динамику эпидемии.
+
+# Задание
+
+Создать рабочий каталог и установить необходимые пакеты.
+
+Выполнить предложенный код модели SIR.
+
+Преобразовать код в литературный стиль (Literate Programming).
+
+Сгенерировать из литературного кода: чистый код, Jupyter Notebook и документацию в формате Quarto.
+
+Выполнить код из Jupyter Notebook.
+
+Интегрировать документацию Quarto в отчёт.
+
+Добавить в литературный код вычисления для нового набора параметров.
+
+Повторить генерацию всех артефактов с новыми параметрами и выполнить их.
+
+Интегрировать новую документацию Quarto в отчёт.
+
+# Теоретическое введение
+
+Модель SIR описывает распространение эпидемии в популяции. Люди делятся на три группы: восприимчивые к болезни (S), инфицированные (I) и выздоровевшие с иммунитетом (R). Переходы между состояниями задаются двумя процессами: заражение (S + I → I + I) с коэффициентом β и выздоровление (I → R) с коэффициентом γ. Для моделирования используются сети Петри — математический аппарат для описания дискретных распределённых систем. В работе применяются два подхода: детерминированный (решение системы обыкновенных дифференциальных уравнений на основе закона действующих масс) и стохастический (прямой алгоритм Гиллеспи, учитывающий случайные флуктуации). Начальные условия: 990 восприимчивых, 10 заражённых, 0 выздоровевших. Исследуется влияние коэффициента заражения β на пик эпидемии и конечное число переболевших.
+
+# Выполнение лабораторной работы
+
+### 1. Создание нового релиза
+
+Создаем новый релиз v.6.0.0 и обновляем информацию по релизу v.4.0.0
+
+![Создание нового релиза v.6.0.0](image/1.png){#fig-release width=70%}
+
+### 2. Настройка окружения Julia
+
+Запускаем Julia и установку пакетов
+
+![Запуск Julia](image/2.png){#fig-julia-start width=70%}
+
+![Установка пакетов Julia](image/3.png){#fig-julia-start width=70%}
+
+### 3. Запуск скриптов и тема работы
+
+Устанавливаем необходимые пакеты для первого скрипта
+
+![Установка пакетов](image/4.png){#fig-project-create width=70%}
+
+![Установка пакетов](image/5.png){#fig-project-create width=70%}
+
+![Установка пакетов](image/6.png){#fig-project-create width=70%}
+
+
+Запуск первого скрипта scripts/sirpetri_run.jl
+
+![Запуск скрипта scripts/sirpetri_run.jl](image/8.png){#fig-project-create width=70%}
+
+![Таблица скрипта scripts/sirpetri_run.jl](image/8_1.png){#fig-project-create width=70%}
+
+![Таблица скрипта scripts/sirpetri_run.jl](image/8_2.png){#fig-project-create width=70%}
+
+![График скрипта scripts/sirpetri_run.jl](plots/sir_stoch_dynamics.png){#fig-project-create width=70%}
+
+![График скрипта scripts/sirpetri_run.jl](plots/sir_det_dynamics.png){#fig-project-create width=70%}
+
+![jupyter-notebook от scripts/sirpetri_run.jl](image/9.png){#fig-project-create width=70%}
+
+Создание, запуск следующего скрипта scripts/sirpetri_scan_parameters.jl и создание его производных форматов
+
+![Запуск скрипта scripts/sirpetri_scan_parameters.jl](image/10.png){#fig-project-create width=70%}
+
+![Таблица скрипта scripts/sirpetri_scan_parameters.jl](image/12.png){#fig-project-create width=70%}
+
+![jupyter-notebook от scripts/sirpetri_scan_parameters.jl](image/11.png){#fig-project-create width=70%}
+
+Далее снова перехожу в директорию проекта и создаю и запускаю следующий скрипт scripts/sirpetri_animate.jl
+
+![Запуск скрипта scripts/sirpetri_animate.jl](image/13.png){#fig-project-create width=70%}
+
+![Таблица скрипта scripts/sirpetri_animate.jl](image/14.png){#fig-project-create width=70%}
+
+![jupyter-notebook от scripts/sirpetri_animate.jl](image/15.png){#fig-project-create width=70%}
+
+Далее снова перехожу в директорию проекта и создаю и запускаю следующий скрипт scripts/sirpetri_report.jl
+
+![Запуск скрипта scripts/sirpetri_report.jl](image/16.png){#fig-project-create width=70%}
+
+![График скрипта scripts/sirpetri_report.jl](image/comparison.png){#fig-project-create width=70%}
+
+![График скрипта scripts/sirpetri_report.jl](image/sensitivity.png){#fig-project-create width=70%}
+
+![jupyter-notebook от scripts/sirpetri_report.jl](image/18.png){#fig-project-create width=70%}
+
+Устанавливаем необходимые пакеты для производных форматов
+
+![Установка пакетов](image/15.png){#fig-project-create width=70%}
+
+Создаем производные форматы от скриптов 
+
+![Создание производных форматов](image/16_1.png){#fig-project-create width=70%}
+
+![Создание производных форматов](image/17_1.png){#fig-project-create width=70%}
+
+![Создание производных форматов](image/18_1.png){#fig-project-create width=70%}
+
+![Создание производных форматов](image/18_2.png){#fig-project-create width=70%}
+
+![Создание производных форматов](image/18_3.png){#fig-project-create width=70%}
+
+
+В каталоге отчёта в файл _quarto.yml включаем поддержку кода julia
+
+![Настройка _quarto.yml](image/21.png){#fig-project-create width=70%}
+
+В файле отчёта подключаем файл описания программ
+
+![Подключение файлов](image/20.png){#fig-project-create width=70%}
+
+{{< include ../project/markdown/SIRPetri/SIRPetri.qmd >}}
+{{< include ../project/markdown/sirpetri_animate/sirpetri_animate.qmd >}}
+{{< include ../project/markdown/sirpetri_report/sirpetri_report.qmd >}}
+{{< include ../project/markdown/sirpetri_run/sirpetri_run.qmd >}}
+{{< include ../project/markdown/sirpetri_scan_parameters/sirpetri_scan_parameters.qmd >}}
+
+# Выводы
+
+Детерминированная симуляция даёт гладкую, усреднённую динамику эпидемии с классическим пиком заболеваемости.
+
+Стохастическая симуляция (алгоритм Гиллеспи) вносит случайные флуктуации; при большой популяции её результаты близки к детерминированным, но при малых числах различия существенны.
+
+Сканирование параметра β показывает пороговое поведение: при малых β эпидемии практически нет, с ростом β пик инфицированных и конечное число выздоровевших резко возрастают, достигая насыщения.
+
+Анимация динамики наглядно демонстрирует прохождение волны инфекции.
+
+Модель SIR на сетях Петри успешно реализована, позволяет исследовать как среднюю динамику, так и случайные отклонения, а также оценивать чувствительность к параметрам.
+
+# Список литературы{.unnumbered}
+
+::: {#refs}
+:::
+Имитационное моделирование. Практикум https://esystem.rudn.ru/pluginfile.php/3094278/modeling-lab.pdf
